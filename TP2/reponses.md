@@ -24,3 +24,14 @@
 - Faire trop d’appels peut **bloquer l’accès temporairement** ou générer des erreurs.  
 - Limiter les appels permet aussi de **réduire la charge sur le serveur** et d’éviter des temps de réponse plus longs.  
 - Dans un projet réel, on utilise souvent **la mise en cache** pour réutiliser les résultats déjà obtenus et limiter les appels répétitifs.
+
+
+## Exercice 4 : Améliorer la structure
+
+**Question : Pourquoi est-il important de factoriser le code ?**  
+**Réponse :**  
+- Pour **éviter de répéter le même code** dans plusieurs endroits.  
+- Pour faciliter la **maintenance** : si on change la logique, il suffit de la modifier **à un seul endroit**.  
+- Pour améliorer la **lisibilité et la structure** du projet.  
+- Pour permettre la **réutilisation du code** dans plusieurs fichiers ou projets.
+
