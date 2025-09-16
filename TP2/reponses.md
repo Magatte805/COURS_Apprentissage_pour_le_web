@@ -14,3 +14,13 @@
 - L’API Nominatim peut renvoyer plusieurs formats de réponse : XML, HTML, JSON, etc.  
 - En précisant `format=json`, on obtient un **résultat JSON**, facile à manipuler avec Python et Flask.  
 - Cela permet de traiter directement les données (latitude et longitude) dans l’application.
+
+
+## Exercice 3 : Calcul de distance routière entre deux villes
+
+**Question : Pourquoi est-il important de limiter le nombre d’appels à l’API OpenRouteService ?**  
+**Réponse :**  
+- Les APIs publiques comme OpenRouteService ont souvent **des quotas gratuits** (limite de requêtes par jour ou par minute).  
+- Faire trop d’appels peut **bloquer l’accès temporairement** ou générer des erreurs.  
+- Limiter les appels permet aussi de **réduire la charge sur le serveur** et d’éviter des temps de réponse plus longs.  
+- Dans un projet réel, on utilise souvent **la mise en cache** pour réutiliser les résultats déjà obtenus et limiter les appels répétitifs.
