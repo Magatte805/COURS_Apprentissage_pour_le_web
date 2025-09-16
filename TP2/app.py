@@ -4,6 +4,7 @@ from Utils import get_coords
 
 
 app = Flask(__name__)
+history = []
 
 # Route pour les coordonnées d'une ville
 @app.route('/coords/<city>')
@@ -43,12 +44,30 @@ def distance_routiere():
     # Calcul de la distance routière
     route = client.directions([coords_from, coords_to], profile='driving-car')
     distance_m = route['routes'][0]['summary']['distance']
+    
+    #Sauvegarde dans l'historique
+    result = {
+        "from": city_from,
+        "to": city_to,
+        "distance_km": round(distance_m / 1000, 2)
+    }
+    history.append(result)
 
     return jsonify({
         "from": city_from,
         "to": city_to,
         "distance_km": round(distance_m / 1000, 2)
     })
+   
+
+@app.route('/history', methods=['GET'])
+def get_history():
+    return jsonify(history)
+
+@app.route('/history', methods=['DELETE'])
+def clear_history():
+    history.clear()
+    return jsonify({"message": "Historique vidé"})
 
 
 if __name__ == '__main__':

@@ -62,3 +62,11 @@
 - Utiliser des **variables d’environnement** (`.env`) et un fichier `.gitignore` pour qu’il ne soit pas poussé sur Git.  
 - Dans le code, récupérer la clé via `os.environ.get('API_KEY')`.  
 - Ne partager la clé qu’avec les collaborateurs de confiance.
+
+
+## Exercice 5 : Historique des recherches
+
+**Question : Comment rendre cet historique persistant même après redémarrage du serveur ?**
+**Réponse :**  On peut sauvegarder l’historique dans un fichier (ex. JSON) ou dans une base de données (ex. SQLite). Ainsi, les données seront relues au démarrage de l’application et ne disparaîtront pas après un redémarrage du serveur.
+
+
