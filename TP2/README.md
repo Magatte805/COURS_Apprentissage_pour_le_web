@@ -16,7 +16,6 @@ Sous **Windows** :
 py -m venv venv
 venv\Scripts\activate
 ```
-
 ### 2. Installer les dépendances
 pip install flask requests openrouteservice
 
