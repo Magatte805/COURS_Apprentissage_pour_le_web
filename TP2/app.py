@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request
 import openrouteservice
 from Utils import get_coords  
 
+
 app = Flask(__name__)
 
 # Route pour les coordonnées d'une ville
