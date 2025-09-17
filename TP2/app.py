@@ -67,7 +67,7 @@ def get_history():
 @app.route('/history', methods=['DELETE'])
 def clear_history():
     history.clear()
-    return jsonify({"message": "Historique vidé"})
+    return jsonify({"message": "Historique vide"})
 
 
 if __name__ == '__main__':

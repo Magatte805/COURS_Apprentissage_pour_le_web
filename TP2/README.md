@@ -16,11 +16,19 @@ Sous **Windows** :
 py -m venv venv
 venv\Scripts\activate
 ```
+Sous ** Linux/Mac**
+```bash
+source venv/bin/activate
+```
 ### 2. Installer les dépendances
+````bash
 pip install flask requests openrouteservice
+```
 
 ### Utilisation : Lancer le serveur avec :
+```bash
 python app.py
+```
 ## L’API sera disponible à l’adresse :
 👉 http://127.0.0.1:5000/
 
@@ -80,7 +88,7 @@ http://127.0.0.1:5000/history
 
 ### 4. DELETE /history
 Vide l’historique des recherches.
-**Exemple: **
+**Exemple : (à exécuter dans un terminal Git Bash ou Linux/macOS) **
 ```bash
 curl -X DELETE http://127.0.0.1:5000/history
 ```
