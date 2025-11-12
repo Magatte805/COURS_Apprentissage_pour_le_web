@@ -4,6 +4,7 @@ import TodoItem from './TodoItem';
 function App() {
   const [todos, setTodos] = useState([]);
   const [input, setInput] = useState('');
+  const [filter, setFilter] = useState('Toutes'); 
 
   // Charger les tâches depuis le localStorage
   useEffect(() => {
@@ -18,7 +19,7 @@ function App() {
     localStorage.setItem('todos', JSON.stringify(todos));
   }, [todos]);
 
-  //Ajouter une tâche
+  // Ajouter une tâche
   const addTodo = () => {
     if (input.trim() === '') return;
     const newTodo = { id: Date.now(), text: input, completed: false };
@@ -26,7 +27,7 @@ function App() {
     setInput('');
   };
 
-  //Cocher / décocher une tâche
+  // Cocher , décocher une tâche
   const toggleTodo = (id) => {
     setTodos(
       todos.map(todo =>
@@ -35,10 +36,17 @@ function App() {
     );
   };
 
-  //Supprimer une tâche
+  // Supprimer une tâche
   const deleteTodo = (id) => {
     setTodos(todos.filter(todo => todo.id !== id));
   };
+
+  // Filtrer les tâches selon le filtre choisi
+  const filteredTodos = todos.filter(todo => {
+    if (filter === 'Toutes') return true;
+    if (filter === 'Actives') return !todo.completed;
+    if (filter === 'Terminées') return todo.completed;
+  });
 
   return (
     <div>
@@ -53,10 +61,19 @@ function App() {
       />
       <button onClick={addTodo}>Ajouter</button>
 
-      {/* Liste des tâches */}
+      {/* Boutons de filtre */}
+      <div style={{ marginTop: '10px', marginBottom: '10px' }}>
+        <button onClick={() => setFilter('Toutes')}>Toutes</button>
+        <button onClick={() => setFilter('Actives')}>Actives</button>
+        <button onClick={() => setFilter('Terminées')}>Terminées</button>
+      </div>
+
+      {/* Compteur */}
       <p>Tâches restantes : {todos.filter(todo => !todo.completed).length}</p>
+
+      {/* Liste des tâches filtrées */}
       <ul>
-        {todos.map(todo => (
+        {filteredTodos.map(todo => (
           <TodoItem
             key={todo.id}
             todo={todo}
