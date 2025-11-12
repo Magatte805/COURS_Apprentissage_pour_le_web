@@ -14,3 +14,14 @@
 
 **Question2 :Que se passerait-il si deux tâches avaient la même clé?**
 **Réponse : ** React pourrait se tromper dans la mise à jour, entraînant des bugs ou des éléments mal affichés.
+
+## Partie C : Gestion de l’état (useState) et interactions
+
+**Question 1: Quelle différence entre modifier une variable et mettre à jour un état React?**
+
+**Réponse :** - Modifier une variable change seulement cette valeur locale immédiate.
+            -    Mettre à jour un état React (via setState/useState) informe React qu’il doit re-render le composant et propager la nouvelle valeur dans l’UI.
+
+**Question2 : Pourquoi ne faut-il pas modifier directement un tableau d’état?**
+
+**Réponse :** Parce que modifier le tableau en place ne change pas la référence ; React peut ne pas détecter la modification et ne pas re-render. On doit créer une nouvelle copie et passer cette copie à setTodos.
