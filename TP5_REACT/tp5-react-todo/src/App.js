@@ -1,9 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TodoItem from './TodoItem';
 
 function App() {
   const [todos, setTodos] = useState([]);
   const [input, setInput] = useState('');
+
+  // Charger les tâches depuis le localStorage
+  useEffect(() => {
+    const savedTodos = JSON.parse(localStorage.getItem('todos'));
+    if (savedTodos) {
+      setTodos(savedTodos);
+    }
+  }, []);
+
+  // Sauvegarder les tâches à chaque mise à jour
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
 
   //Ajouter une tâche
   const addTodo = () => {
@@ -41,6 +54,7 @@ function App() {
       <button onClick={addTodo}>Ajouter</button>
 
       {/* Liste des tâches */}
+      <p>Tâches restantes : {todos.filter(todo => !todo.completed).length}</p>
       <ul>
         {todos.map(todo => (
           <TodoItem
